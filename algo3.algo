@@ -1,0 +1,91 @@
+FUNCTION size() : INTEGER
+VAR
+    x:INTEGER;
+BEGIN
+    REPEAT
+        write("donnez la taille de vecteurs:");
+        read(x);
+    UNTIL ((x:INTEGER)&&(x<0))
+    RETURN x ;
+END
+PROCEDURE remp(n : INTEGER ,var v :  ARRAY_OF INTEGER)
+VAR
+    i : INTEGER;
+BEGIN
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        write("donnez un element du vecteur : ");
+        read(v[i]);
+    END_FOR
+END
+FUNCTION prod(n:INTEGER,v1,v2 : ARRAY_OF INTEGER ) : INTEGER
+VAR
+    i,y : INTEGER;
+BEGIN
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        y:=y+(v1[i]*v2[i]);
+    END_FOR
+    RETURN y ;
+END
+ALGORITHM Dot_product
+VAR
+    v1,v2 : ARRAY_OF INTEGER;
+    n,p : INTEGER;
+BEGIN
+    n:= size();
+    remp(n,v1);
+    remp(n,v2);
+    p=prod(n,v1,v2);
+    IF (p==0) THEN
+        write("les deux vecteurs sont orthogonaux");
+      ELSE
+        write("les deux vecteurs ne sont pas orthogonaux");
+    END_IF
+
+END
+
+// SOLUTION 2
+
+FUNCTION size() : INTEGER
+VAR
+    x:INTEGER;
+BEGIN
+    REPEAT
+        write("donnez la taille de vecteurs:");
+        read(x);
+    UNTIL ((x:INTEGER)&&(x<0))
+    RETURN x ;
+END
+PROCEDURE remp(n : INTEGER ,var v :  ARRAY_OF INTEGER)
+VAR
+    i : INTEGER;
+BEGIN
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        write("donnez un element du vecteur : ");
+        read(v[i]);
+    END_FOR
+END
+PROCEDURE prod(var p:INTEGER,n:INTEGER,v1,v2 : ARRAY_OF INTEGER )
+VAR
+    i,y=0 : INTEGER;
+BEGIN
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        p:=p+(v1[i]*v2[i]);
+    END_FOR
+    IF (p==0) THEN
+        write("les deux vecteurs sont orthogonaux");
+      ELSE
+        write("les deux vecteurs ne sont pas orthogonaux");
+    END_IF
+END 
+
+ALGORITHM Dot_product
+VAR
+    v1,v2 : ARRAY_OF INTEGER;
+    n : INTEGER;
+    p:=0 INTEGER;
+BEGIN
+    n:= size();
+    remp(n,v1);
+    remp(n,v2);
+    prod(n,v1,v2);
+END
